@@ -1,16 +1,16 @@
-import React from "react"
-import { useState } from "react"
-import { Box, IconButton, Typography } from "@mui/material"
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"
-import MenuOpen from "@mui/icons-material/MenuOpen"
-import colors from "../../theme"
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined"
+import React from "react";
+import { useState } from "react";
+import { Box, IconButton, Typography } from "@mui/material";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import MenuOpen from "@mui/icons-material/MenuOpen";
+import colors from "../../theme";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function MainSidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
     <Box>
@@ -94,5 +94,5 @@ export default function MainSidebar() {
         </Menu>
       </Sidebar>
     </Box>
-  )
+  );
 }
