@@ -1,13 +1,13 @@
-import React from 'react'
-import { useState } from 'react'
-import { Box, IconButton, Typography } from '@mui/material'
-import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
-import MenuOpen from '@mui/icons-material/MenuOpen'
-import colors from '../../theme'
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined'
+import React from "react"
+import { useState } from "react"
+import { Box, IconButton, Typography } from "@mui/material"
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar"
+import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined"
+import MenuOpen from "@mui/icons-material/MenuOpen"
+import colors from "../../theme"
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined"
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom"
 
 export default function MainSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false)
@@ -21,7 +21,7 @@ export default function MainSidebar() {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOpen /> : undefined}
             style={{
-              margin: '10px 0 20px 0',
+              margin: "10px 0 20px 0",
               color: colors.grey[100],
             }}
           >
@@ -47,14 +47,14 @@ export default function MainSidebar() {
                   width="100px"
                   height="100px"
                   src={`../../assets/user.png`}
-                  style={{ cursor: 'pointer', borderRadius: '50%' }}
+                  style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
               <Box textAlign="center">
                 <Typography
                   color={colors.grey[100]}
                   fontWeight="bold"
-                  sx={{ m: '10px 0 0 0' }}
+                  sx={{ m: "10px 0 0 0" }}
                 >
                   Ed Roh
                 </Typography>
