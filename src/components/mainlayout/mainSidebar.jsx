@@ -1,12 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Box, IconButton, Typography } from "@mui/material";
-import {
-  Sidebar,
-  Menu,
-  MenuItem,
-  SubMenu,
-} from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import MenuOpen from "@mui/icons-material/MenuOpen";
 import colors from "../../theme";
@@ -18,7 +13,7 @@ export default function MainSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   return (
-    <Box >
+    <Box>
       <Sidebar collapsed={isCollapsed}>
         <Menu>
           {/* LOGO AND MENU ICON */}
@@ -71,16 +66,31 @@ export default function MainSidebar() {
           )}
 
           <SubMenu icon={<PeopleOutlinedIcon />} label="Manger">
-            <MenuItem component={<Link />} icon={<PeopleOutlinedIcon />} to="/users">
+            <MenuItem
+              component={<Link />}
+              icon={<PeopleOutlinedIcon />}
+              to="/users"
+            >
               Users
             </MenuItem>
-            <MenuItem component={<Link />} icon={<PeopleOutlinedIcon />} to="/teachers">
-             Teachers
-           </MenuItem>
+            <MenuItem
+              component={<Link />}
+              icon={<PeopleOutlinedIcon />}
+              to="/teachers"
+            >
+              Teachers
+            </MenuItem>
             <MenuItem icon={<PeopleOutlinedIcon />}> Line charts </MenuItem>
           </SubMenu>
           <MenuItem icon={<PeopleOutlinedIcon />}> Documentation </MenuItem>
           <MenuItem icon={<PeopleOutlinedIcon />}> Calendar </MenuItem>
+          <MenuItem
+            icon={<PeopleOutlinedIcon />}
+            component={<Link />}
+            to="/courseCategory"
+          >
+            Course Category
+          </MenuItem>
         </Menu>
       </Sidebar>
     </Box>
