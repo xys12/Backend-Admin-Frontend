@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import { DataGrid } from '@mui/x-data-grid'
+import { DataGrid } from "@mui/x-data-grid"
 
 const List = (props) => {
   return (

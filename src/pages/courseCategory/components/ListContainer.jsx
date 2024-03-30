@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { Box } from '@mui/material'
-import { useEffect } from 'react'
-import { columns } from './columns'
-import { style } from './style'
-import List from './List'
-import ListAction from './ListAction'
-import { mockData } from './data'
+import React, { useState } from "react"
+import { Box } from "@mui/material"
+import { useEffect } from "react"
+import { columns } from "./columns"
+import { style } from "./style"
+import List from "./List"
+import ListAction from "./ListAction"
+import { mockData } from "./data"
 
 const ListContainer = () => {
   const [pageSearch, setPageSearch] = useState({

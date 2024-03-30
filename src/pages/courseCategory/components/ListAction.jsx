@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import { Box, Button, Stack } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
-import AlterDialog from '../../../components/alterDialog'
-import deleteRequest from '../../../request/delRequest'
+import React, { useState } from "react"
+import { Box, Button, Stack } from "@mui/material"
+import { useNavigate } from "react-router-dom"
+import AlterDialog from "../../../components/alterDialog"
+import deleteRequest from "../../../request/delRequest"
 
-import toast from 'react-hot-toast'
+import toast from "react-hot-toast"
 const ListAction = (rowSelectionModel, pageSearch, setPageSearch) => {
-  const [alertMessage, setAlertMessage] = useState('')
+  const [alertMessage, setAlertMessage] = useState("")
   const navigate = useNavigate()
 
   const [open, setOpen] = useState(false)
@@ -16,11 +16,11 @@ const ListAction = (rowSelectionModel, pageSearch, setPageSearch) => {
 
   function handleDelete() {
     if (rowSelectionModel.length === 0) {
-      setAlertMessage('Please select items')
+      setAlertMessage("Please select items")
       setOpen(true)
       return
     }
-    setAlertMessage('Are you sure to delete these items?')
+    setAlertMessage("Are you sure to delete these items?")
     setOpen(true)
   }
 
@@ -30,19 +30,19 @@ const ListAction = (rowSelectionModel, pageSearch, setPageSearch) => {
       return
     }
 
-    let ids = rowSelectionModel.join(',')
+    let ids = rowSelectionModel.join(",")
     let result = await deleteRequest(`/courseCategory/${ids}`)
     if (result.status === 1) {
-      toast.success('delete success!')
+      toast.success("delete success!")
     } else {
-      toast.success('delete fail!')
+      toast.success("delete fail!")
     }
 
     setPageSearch({ page: 1, pageSize: pageSearch.pageSize })
   }
   return (
     <>
-      <Box sx={{ mb: '15px' }}>
+      <Box sx={{ mb: "15px" }}>
         <Stack direction="row" spacing={2} justifyContent="flex-end">
           <Button variant="contained" onClick={handleAddCategory}>
             Add Category

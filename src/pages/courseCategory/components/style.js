@@ -1,26 +1,26 @@
-import colors from '../../../theme'
+import colors from "../../../theme"
 export const style = {
-  '& .MuiDataGrid-root': {
-    border: 'none',
+  "& .MuiDataGrid-root": {
+    border: "none",
   },
-  '& .MuiDataGrid-cell': {
-    borderBottom: 'none',
+  "& .MuiDataGrid-cell": {
+    borderBottom: "none",
   },
-  '& .name-column--cell': {
+  "& .name-column--cell": {
     color: colors.greenAccent[300],
   },
-  '& .MuiDataGrid-columnHeaders': {
+  "& .MuiDataGrid-columnHeaders": {
     backgroundColor: colors.blueAccent[700],
-    borderBottom: 'none',
+    borderBottom: "none",
   },
-  '& .MuiDataGrid-virtualScroller': {
+  "& .MuiDataGrid-virtualScroller": {
     backgroundColor: colors.primary[400],
   },
-  '& .MuiDataGrid-footerContainer': {
-    borderTop: 'none',
+  "& .MuiDataGrid-footerContainer": {
+    borderTop: "none",
     backgroundColor: colors.blueAccent[700],
   },
-  '& .MuiCheckbox-root': {
+  "& .MuiCheckbox-root": {
     color: `${colors.greenAccent[200]} !important`,
   },
 }
