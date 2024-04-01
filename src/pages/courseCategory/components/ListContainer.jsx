@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import { Box } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import { useEffect } from "react"
-import { columns } from "./columns"
 import { style } from "./style"
 import List from "./List"
 import ListAction from "./ListAction"
 import { mockData } from "./data"
 import getRequest from "../../../request/getRequest";
+import toast from "react-hot-toast";
 
 const ListContainer = () => {
   const [pageSearch, setPageSearch] = useState({
@@ -24,6 +24,62 @@ const ListContainer = () => {
       pageSize: e.pageSize,
     }))
   }
+
+  const columns = [
+    { field: "categoryid", headerName: "ID" },
+    {
+      field: "categoryname",
+      headerName: "Name",
+      flex: 1,
+      cellClassName: "name-column--cell",
+    },
+    {
+      field: "categorylevel",
+      headerName: "Level",
+      flex: 1,
+    },
+    {
+      field: "categoryparentid",
+      headerName: "Parent ID",
+      flex: 1,
+    },
+    {
+      field: "remark",
+      headerName: "Remark",
+      flex: 1,
+    },
+    {
+      field: "operation",
+      headerName: "Operation",
+      flex: 1,
+      renderCell: () => {
+        return (
+          <>
+            <Box>
+              <Button variant="text">Update</Button>
+            </Box>
+            <Box>
+              <Button variant="text" onClick={(e) => {
+                const categoryId = e.target.parentNode.parentNode.parentNode.getAttribute("data-id")
+                const getCourseCategory = async () => {
+                  let result = await getRequest(
+                    `/courseCategories/parent/${categoryId}/${pageSearch.page}/${pageSearch.pageSize}`
+                  );
+                  if (result.status === 1) {
+                    setPageData(result.data);
+                  }else{
+                    toast.error("This category doesn't have subcategory");
+                  }
+                  
+                }
+                getCourseCategory()
+              }}>Subcategory</Button>
+            </Box>
+          </>
+        )
+      },
+    },
+  ]
 
   useEffect(() => {
     const getCourseCategory = async () => {
