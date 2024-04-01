@@ -6,6 +6,7 @@ import { style } from "./style"
 import List from "./List"
 import ListAction from "./ListAction"
 import { mockData } from "./data"
+import getRequest from "../../../request/getRequest";
 
 const ListContainer = () => {
   const [pageSearch, setPageSearch] = useState({
@@ -26,7 +27,15 @@ const ListContainer = () => {
 
   useEffect(() => {
     const getCourseCategory = async () => {
-      setPageData(mockData)
+      let result = await getRequest(
+        `/courseCategories/parent/0/${pageSearch.page}/${pageSearch.pageSize}`
+      );
+      if (result.status === 1) {
+        setPageData(result.data);
+      } else {
+        setPageData(mockData)
+      }
+      
     }
     getCourseCategory()
   }, [pageSearch])
