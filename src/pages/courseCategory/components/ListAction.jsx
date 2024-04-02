@@ -1,45 +1,44 @@
-import React, { useState } from "react"
-import { Box, Button, Stack } from "@mui/material"
-import { useNavigate } from "react-router-dom"
-import AlterDialog from "../../../components/alterDialog"
-import deleteRequest from "../../../request/delRequest"
+import React, { useState } from "react";
+import { Box, Button, Stack } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import AlterDialog from "../../../components/alterDialog";
+import deleteRequest from "../../../request/delRequest";
+import toast from "react-hot-toast";
 
-import toast from "react-hot-toast"
-const ListAction = (rowSelectionModel, pageSearch, setPageSearch) => {
-  const [alertMessage, setAlertMessage] = useState("")
-  const navigate = useNavigate()
+const ListAction = ({ rowSelectionModel, pageSearch, setPageSearch }) => {
+  const [alertMessage, setAlertMessage] = useState("");
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
-  const [open, setOpen] = useState(false)
-  function handleAddCategory() {
-    navigate()
-  }
+  const handleAddCategory = () => {
+    navigate("/courseCategory/AddCourse");
+  };
 
-  function handleDelete() {
+  const handleDelete = async () => {
     if (rowSelectionModel.length === 0) {
-      setAlertMessage("Please select items")
-      setOpen(true)
-      return
+      setAlertMessage("Please select items");
+      setOpen(true);
+      return;
     }
-    setAlertMessage("Are you sure to delete these items?")
-    setOpen(true)
-  }
+    setAlertMessage("Are you sure to delete these items?");
+    setOpen(true);
 
-  const handleDialogClose = async (data) => {
-    setOpen(false)
-    if (!data.isOk || rowSelectionModel.length === 0) {
-      return
+    if (open) {
+      let ids = rowSelectionModel.join(",");
+      let result = await deleteRequest(`/courseCategory/${ids}`);
+      if (result.status === 1) {
+        toast.success("Delete success!");
+      } else {
+        toast.error("Delete failed!");
+      }
+      setPageSearch({ page: 1, pageSize: pageSearch.pageSize });
     }
+  };
 
-    let ids = rowSelectionModel.join(",")
-    let result = await deleteRequest(`/courseCategory/${ids}`)
-    if (result.status === 1) {
-      toast.success("delete success!")
-    } else {
-      toast.success("delete fail!")
-    }
+  const handleDialogClose = (data) => {
+    setOpen(false);
+  };
 
-    setPageSearch({ page: 1, pageSize: pageSearch.pageSize })
-  }
   return (
     <>
       <Box sx={{ mb: "15px" }}>
@@ -57,10 +56,12 @@ const ListAction = (rowSelectionModel, pageSearch, setPageSearch) => {
         alertType="warning"
         open={open}
         onClose={handleDialogClose}
+        onConfirm={handleDelete}
       >
         {alertMessage}
       </AlterDialog>
     </>
-  )
-}
-export default ListAction
+  );
+};
+
+export default ListAction;
