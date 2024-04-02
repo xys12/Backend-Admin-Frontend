@@ -1,13 +1,17 @@
 import React, { useState } from "react"
 import { Box } from "@mui/material"
 import { useEffect } from "react"
-import { columns } from "./columns"
+// import { columns } from "./columns"
 import { style } from "./style"
 import List from "./List"
 import ListAction from "./ListAction"
 import { mockData } from "./data"
 
+import { DataGrid } from '@mui/x-data-grid';
+import { useColumns } from './columns';
+
 const ListContainer = () => {
+  const columns = useColumns();
   const [pageSearch, setPageSearch] = useState({
     pageSize: 100,
     page: 1,
@@ -30,7 +34,7 @@ const ListContainer = () => {
     }
     getCourseCategory()
   }, [pageSearch])
-
+  
   return (
     <>
       <Box m="40px 0 0 0" height="75vh" sx={style}>
