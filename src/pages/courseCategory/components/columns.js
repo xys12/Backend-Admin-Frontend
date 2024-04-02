@@ -1,6 +1,16 @@
 import { Box, Button } from "@mui/material"
+import React from "react"
+import { useNavigate } from 'react-router-dom';
 
-export const columns = [
+export const useColumns = () => {
+  const navigate = useNavigate();
+
+  const handleUpdate=(id)=>()=>{
+    navigate(`/courseCategory/UpdateCourse/${id}`);
+   };
+
+
+const columns = [
   { field: "categoryid", headerName: "ID" },
   {
     field: "categoryname",
@@ -27,12 +37,14 @@ export const columns = [
     field: "operation",
     headerName: "Operation",
     flex: 1,
-    renderCell: () => {
+    renderCell: (params) => {
       return (
         <Box>
-          <Button variant="text">Update</Button>
+          <Button variant="text" onClick={() => navigate(`/courseCategory/UpdateCourse/${params.id}`)}>Update</Button>
         </Box>
       )
     },
   },
 ]
+return columns;
+}
