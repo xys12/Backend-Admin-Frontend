@@ -9,6 +9,9 @@ import User from "./pages/users/index";
 import AddUser from "./pages/users/adduser";
 import CourseCategory from "./pages/courseCategory";
 import { theme } from "./theme";
+import UpdateCourse from "./pages/courseCategory/components/UpdateCourse";
+import AddCourse from "./pages/courseCategory/components/AddCourse";
+import React from "react"
 
 function App() {
   return (
@@ -50,10 +53,30 @@ function App() {
               </NeedAuth>
             }
           />
+
+          <Route
+            path="/courseCategory/UpdateCourse/:id"
+            element={
+              <NeedAuth>
+                <UpdateCourse />
+              </NeedAuth>
+            }
+          />
+          <Route
+            path="/courseCategory/AddCourse/:id?"
+            element={
+              <NeedAuth>
+                <AddCourse />
+              </NeedAuth>
+            }
+          />
         </Route>
       </Routes>
     </ThemeProvider>
   );
+  if (typeof process === 'undefined') {
+    global.process = { env: {} };
+  }
 }
 
 export default App;
